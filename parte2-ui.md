@@ -1,4 +1,4 @@
-# 🛠️ Plantilla Maestra PC1 - PARTE 2: Presentación (Vue UI)
+Presentación
 
 **Instrucciones de uso:** Estos son los componentes visuales. Recuerda la regla de oro: Los archivos físicos se llaman `.component.vue`, pero en el HTML se usan con guiones (ej. `<item-card>`).
 
@@ -14,7 +14,7 @@
  * @author [Tu Código] - [Tu Nombre y Apellido]
  */
 defineProps({
-  // ⚠️ CAMBIAR AQUÍ: El nombre del prop según tu entidad (ej. article, coffee, university)
+  //  CAMBIAR AQUÍ: El nombre del prop según tu entidad (ej. article, coffee, university)
   item: {
     type: Object,
     required: true
@@ -23,14 +23,14 @@ defineProps({
 </script>
 
 <template>
-  <!-- ⚠️ CAMBIAR AQUÍ: El diseño interno de la tarjeta según lo que pida la rúbrica -->
+  <!--  CAMBIAR AQUÍ: El diseño interno de la tarjeta según lo que pida la rúbrica -->
   <pv-card class="m-3" style="width: 25rem; overflow: hidden">
     <template #header>
       <!-- Ejemplo de imagen. Ajustar item.urlToLogo a la propiedad real de tu Entidad -->
       <img :src="item.urlToLogo" alt="Logo" class="w-full h-10rem object-contain p-3" />
     </template>
     
-    <!-- ⚠️ CAMBIAR AQUÍ: Las propiedades (ej. item.title, item.author) -->
+    <!--  CAMBIAR AQUÍ: Las propiedades (ej. item.title, item.author) -->
     <template #title>{{ item.name }}</template>
     <template #subtitle>{{ item.country }}</template>
     
@@ -41,7 +41,7 @@ defineProps({
         <li v-for="domain in item.domains" :key="domain">{{ domain }}</li>
       </ul>
       
-      <!-- ⚠️ ALERTA RÚBRICA: Si piden links, deben tener target="_blank" -->
+      <!--  ALERTA RÚBRICA: Si piden links, deben tener target="_blank" -->
       <a v-if="item.webPages && item.webPages.length" :href="item.webPages[0]" target="_blank" rel="noopener noreferrer">
         <pv-button label="Visit Website" icon="pi pi-external-link" size="small" />
       </a>
@@ -57,7 +57,7 @@ defineProps({
 
 ```html
 <script setup>
-// ⚠️ CAMBIAR AQUÍ: Importa tu componente tarjeta correcto
+//  CAMBIAR AQUÍ: Importa tu componente tarjeta correcto
 import UniversityCard from './university-card.component.vue';
 
 /**
@@ -65,7 +65,7 @@ import UniversityCard from './university-card.component.vue';
  * @author [Tu Código] - [Tu Nombre y Apellido]
  */
 defineProps({
-  // ⚠️ CAMBIAR AQUÍ: El arreglo que recibes (ej. articles, universities)
+  //  CAMBIAR AQUÍ: El arreglo que recibes (ej. articles, universities)
   items: {
     type: Array,
     required: true
@@ -75,7 +75,7 @@ defineProps({
 
 <template>
   <div class="flex flex-wrap justify-content-center align-items-stretch gap-4">
-    <!-- ⚠️ CAMBIAR AQUÍ: El nombre de la etiqueta debe coincidir con el nombre de tu archivo sin el .component.vue -->
+    <!--  CAMBIAR AQUÍ: El nombre de la etiqueta debe coincidir con el nombre de tu archivo sin el .component.vue -->
     <university-card 
       v-for="item in items" 
       :key="item.name" 
@@ -106,11 +106,11 @@ const { locale, availableLocales } = useI18n();
 <template>
   <pv-toolbar class="bg-primary text-white p-3 border-noround">
     <template #start>
-      <!-- ⚠️ CAMBIAR AQUÍ: El nombre de la App según el examen -->
+      <!-- CAMBIAR AQUÍ: El nombre de la App según el examen -->
       <h2 class="m-0">KnowMyUni / AppName</h2>
     </template>
     <template #end>
-      <!-- ⚠️ ALERTA RÚBRICA: Botones para cambiar de idioma EN | ES -->
+      <!-- ALERTA RÚBRICA: Botones para cambiar de idioma EN | ES -->
       <pv-select-button v-model="locale" :options="availableLocales" aria-labelledby="basic" />
     </template>
   </pv-toolbar>
@@ -130,9 +130,9 @@ const { locale, availableLocales } = useI18n();
 
 <template>
   <footer class="bg-primary text-white text-center p-3 mt-5">
-    <!-- ⚠️ CAMBIAR AQUÍ: Modifica el copyright según el nombre de la app del examen -->
+    <!-- CAMBIAR AQUÍ: Modifica el copyright según el nombre de la app del examen -->
     <p class="m-1">Copyright &copy; 2026 AppName. All rights reserved.</p>
-    <!-- ⚠️ CAMBIAR AQUÍ: Tus datos reales -->
+    <!-- CAMBIAR AQUÍ: Tus datos reales -->
     <p class="m-1">Developed by [Tu Código] - [Tu Nombre y Apellido]</p>
   </footer>
 </template>
@@ -147,13 +147,13 @@ const { locale, availableLocales } = useI18n();
 <script setup>
 import { ref, onMounted } from 'vue';
 
-// ⚠️ CAMBIAR AQUÍ: Importa tus componentes y servicios correctos
+// CAMBIAR AQUÍ: Importa tus componentes y servicios correctos
 import ToolbarContent from './public/components/toolbar.component.vue';
 import FooterContent from './public/components/footer.component.vue';
 import UniversityList from './universities/components/university-list.component.vue';
 import { UniversitiesApiService } from './universities/services/universities-api.service.js';
 
-// ⚠️ CAMBIAR AQUÍ: Variable para guardar los datos (ej. articles)
+// CAMBIAR AQUÍ: Variable para guardar los datos (ej. articles)
 const itemsList = ref([]);
 
 onMounted(async () => {
@@ -169,7 +169,7 @@ onMounted(async () => {
     
     <!-- Contenido Principal -->
     <main class="flex-grow-1 p-4">
-      <!-- ⚠️ CAMBIAR AQUÍ: Usa i18n para el título si quieres, o ponlo fijo -->
+      <!-- CAMBIAR AQUÍ: Usa i18n para el título si quieres, o ponlo fijo -->
       <h1 class="text-center mb-4">{{ $t('home.title') }}</h1>
       
       <!-- Lista de tarjetas -->
