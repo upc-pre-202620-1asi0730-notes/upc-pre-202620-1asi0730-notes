@@ -1,6 +1,5 @@
-# 🛠️ Plantilla Maestra PC1 - PARTE 1: Dominio e Infraestructura
 
-**Instrucciones de uso para el examen:** Copia y pega estos archivos respetando estrictamente las rutas indicadas. Busca los comentarios `// ⚠️ CAMBIAR AQUÍ:` para adaptar la plantilla al problema específico que te ponga el profesor.
+**Instrucciones:** Copia y pega estos archivos respetando estrictamente las rutas indicadas. Busca los comentarios `// CAMBIAR AQUÍ:` para adaptar la plantilla al problema específico que te ponga el profesor.
 
 ---
 
@@ -15,10 +14,10 @@
  */
 export class LogoApiService {
     static getUrlToLogo(domain) {
-        // ⚠️ CAMBIAR AQUÍ: Si el profesor pide Logo.dev o falla el dominio, cambias esta lógica.
+        // CAMBIAR AQUÍ: Si el profesor pide Logo.dev o falla el dominio, cambias esta lógica.
         if (!domain) return 'https://via.placeholder.com/150';
         
-        // ⚠️ CAMBIAR AQUÍ: URL base del servicio de logos (Clearbit en este caso)
+        // CAMBIAR AQUÍ: URL base del servicio de logos (Clearbit en este caso)
         return `https://logo.clearbit.com/${domain}`;
     }
 }
@@ -36,7 +35,7 @@ export class LogoApiService {
  * @author [Tu Código] - [Tu Nombre y Apellido]
  */
 export class University {
-    // ⚠️ CAMBIAR AQUÍ: En los parámetros del constructor van los atributos que TE PIDA LA RÚBRICA.
+    //  CAMBIAR AQUÍ: En los parámetros del constructor van los atributos que TE PIDA LA RÚBRICA.
     // Ojo: Usa camelCase aquí (ej. alphaTwoCode), nunca snake_case (alpha_two_code).
     constructor({ name, country, alphaTwoCode, domains, webPages, urlToLogo }) {
         this.name = name;
@@ -67,11 +66,11 @@ import { LogoApiService } from '../../shared/services/logo-api.service.js';
  */
 export class UniversityAssembler {
     static toEntity(resource) {
-        // ⚠️ CAMBIAR AQUÍ: Lógica especial para calcular datos (como extraer el primer dominio para el logo)
+        //  CAMBIAR AQUÍ: Lógica especial para calcular datos (como extraer el primer dominio para el logo)
         const firstDomain = resource.domains && resource.domains.length > 0 ? resource.domains[0] : null;
         const logoUrl = LogoApiService.getUrlToLogo(firstDomain);
 
-        // ⚠️ CAMBIAR AQUÍ: Mapeo exacto. 
+        //  CAMBIAR AQUÍ: Mapeo exacto. 
         // A la izquierda: El nombre de tu variable en el constructor de la Entidad.
         // A la derecha: resource.nombre_del_campo_exacto_del_JSON_de_la_API
         return new University({
@@ -107,17 +106,17 @@ import { UniversityAssembler } from './university-assembler.service.js';
  */
 export class UniversitiesApiService {
     
-    // ⚠️ CAMBIAR AQUÍ: El nombre del método según lo que busques (ej. getCoffees)
+    // CAMBIAR AQUÍ: El nombre del método según lo que busques (ej. getCoffees)
     static async getUniversities() {
         try {
-            // ⚠️ CAMBIAR AQUÍ: Las URLs exactas que te dé el profesor en el PDF.
+            // CAMBIAR AQUÍ: Las URLs exactas que te dé el profesor en el PDF.
             // Si te pide hacer dos llamadas a la vez, usa Promise.all así:
             const [response1, response2] = await Promise.all([
                 axios.get('http://universities.hipolabs.com/search?country=spain'),
                 axios.get('http://universities.hipolabs.com/search?country=peru')
             ]);
 
-            // ⚠️ CAMBIAR AQUÍ: Consolidar la data. 
+            // CAMBIAR AQUÍ: Consolidar la data. 
             // Cuidado: Algunas APIs devuelven arreglo directo (response.data), 
             // otras lo devuelven dentro de un objeto (response.data.results). ¡Revisa el JSON!
             const combinedData = [...response1.data, ...response2.data];
@@ -127,7 +126,7 @@ export class UniversitiesApiService {
             
         } catch (error) {
             console.error("Error fetching data from API:", error);
-            // ⚠️ CAMBIAR AQUÍ: Retornar un arreglo vacío para que la vista no se rompa
+            // CAMBIAR AQUÍ: Retornar un arreglo vacío para que la vista no se rompa
             return [];
         }
     }
