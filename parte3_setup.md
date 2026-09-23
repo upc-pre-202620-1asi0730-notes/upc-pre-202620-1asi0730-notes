@@ -1,4 +1,4 @@
-# 🛠️ Plantilla Maestra PC1 - PARTE 3: Configuración (i18n y Main)
+# (i18n y Main)
 
 **Instrucciones de uso:** Estos archivos son el motor de tu aplicación. Van en la raíz de la carpeta `src` (o en la carpeta `locales` para los diccionarios). Si copias y pegas esto, tu app arrancará sin errores de configuración.
 
@@ -55,7 +55,7 @@
 ```javascript
 import { createI18n } from 'vue-i18n';
 
-// ⚠️ CAMBIAR AQUÍ: Asegúrate de que las rutas a tus JSON sean correctas
+// CAMBIAR AQUÍ: Asegúrate de que las rutas a tus JSON sean correctas
 import en from './locales/en.json';
 import es from './locales/es.json';
 
@@ -64,7 +64,7 @@ import es from './locales/es.json';
  * @author [Tu Código] - [Tu Nombre y Apellido]
  */
 const i18n = createI18n({
-    legacy: false, // ⚠️ CRÍTICO: Debe ser false para usar Composition API (<script setup>)
+    legacy: false, // CRÍTICO: Debe ser false para usar Composition API (<script setup>)
     locale: 'en', // Idioma por defecto que pide la rúbrica
     fallbackLocale: 'en',
     globalInjection: true, // Permite usar $t en los templates directamente
@@ -107,7 +107,7 @@ import { Button, SelectButton, Card, Toolbar } from 'primevue';
  */
 const app = createApp(App);
 
-// ⚠️ CAMBIAR AQUÍ: Agrega tu API Key de PrimeUI si la rúbrica lo exige (opcional dependiendo de la versión de PrimeVue)
+// CAMBIAR AQUÍ: Agrega tu API Key de PrimeUI si la rúbrica lo exige (opcional dependiendo de la versión de PrimeVue)
 // const primeUiLicenseKey = import.meta.env.VITE_PRIME_UI_LICENSE_KEY;
 
 // Conectar plugins
